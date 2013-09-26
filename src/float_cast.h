@@ -158,6 +158,10 @@
 	**	Win32 doesn't seem to have these functions.
 	**	Therefore implement inline versions of these functions here.
 	*/
+#ifdef _M_ARM
+#define	lrint(dbl)		((long) (dbl))
+#define	lrintf(flt)		((long) (flt))
+#else
 
 	__inline long int
 	lrint (double flt)
@@ -182,6 +186,7 @@
 
 		return intgr ;
 	}
+#endif
 
 #elif (defined (__MWERKS__) && defined (macintosh))
 
